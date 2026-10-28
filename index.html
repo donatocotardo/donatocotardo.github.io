@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tu Nombre — Ingeniería y proyectos</title>
+  <meta name="description" content="Web personal de Tu Nombre: CV, proyectos personales y trabajo de fin de grado.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <span>tunombre.dev</span>
+    <nav aria-label="Principal">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#cv">CV</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#tfg">TFG</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+
+  <main>
+    <div class="hero">
+      <h1>Tu Nombre<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="lead">Una frase que diga qué haces y qué te interesa, en concreto. Por ejemplo: estudio X, me gusta construir Y y ahora busco Z.</p>
+      <dl class="spec">
+        <div><dt>Estudios</dt><dd>Grado en [tu titulación], [universidad]</dd></div>
+        <div><dt>Ubicación</dt><dd>[Ciudad, país]</dd></div>
+        <div><dt>Interesado en</dt><dd>[tus áreas: backend, datos, embebidos...]</dd></div>
+        <div><dt>Estado</dt><dd>[Buscando prácticas / trabajando en... / abierto a ofertas]</dd></div>
+      </dl>
+    </div>
+
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <div class="body">
+        <p>Primer párrafo: quién eres y cómo llegaste a lo que haces. Escríbelo como se lo contarías a alguien en una conversación, sin fórmulas de CV.</p>
+        <p>Segundo párrafo: qué te mueve fuera de lo académico, qué estás aprendiendo ahora y qué tipo de problemas te gusta resolver.</p>
+      </div>
+    </section>
+
+    <section id="cv">
+      <h2>CV</h2>
+      <div class="body">
+        <div>
+          <h3 class="group-title">Formación</h3>
+          <div class="entry">
+            <time>2021 – 2025</time>
+            <div><strong>Grado en [titulación]</strong><p>[Universidad]</p></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="group-title">Experiencia</h3>
+          <div class="entry">
+            <time>2024</time>
+            <div><strong>[Puesto] en [empresa]</strong><p>Una línea sobre lo que hiciste y con qué tecnologías.</p></div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="group-title">Habilidades</h3>
+          <dl class="spec">
+            <div><dt>Lenguajes</dt><dd>Python, C, JavaScript</dd></div>
+            <div><dt>Herramientas</dt><dd>Git, Linux, Docker</dd></div>
+            <div><dt>Idiomas</dt><dd>Español (nativo), inglés (B2)</dd></div>
+          </dl>
+        </div>
+
+        <p><a href="cv.pdf">Descargar CV en PDF</a></p>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <div class="body">
+        <article class="project">
+          <header>
+            <h3><a href="https://github.com/tuusuario/proyecto-1">nombre-del-proyecto</a></h3>
+            <span>2025</span>
+          </header>
+          <p>Qué problema resuelve y qué hace, en dos líneas como máximo.</p>
+          <p class="stack">Python, SQLite, Flask</p>
+        </article>
+
+        <article class="project">
+          <header>
+            <h3><a href="https://github.com/tuusuario/proyecto-2">otro-proyecto</a></h3>
+            <span>2024</span>
+          </header>
+          <p>Qué aprendiste construyéndolo o qué lo hace interesante.</p>
+          <p class="stack">C, Linux</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tfg">
+      <h2>TFG</h2>
+      <div class="body">
+        <h3>Título completo de tu trabajo de fin de grado</h3>
+        <dl class="spec">
+          <div><dt>Titulación</dt><dd>Grado en [titulación]</dd></div>
+          <div><dt>Universidad</dt><dd>[Universidad]</dd></div>
+          <div><dt>Tutor/a</dt><dd>[Nombre del tutor o tutora]</dd></div>
+          <div><dt>Año</dt><dd>2025</dd></div>
+        </dl>
+        <p>Resumen en pocas líneas: cuál era el problema, qué hiciste y qué resultados obtuviste.</p>
+        <ul class="links">
+          <li><a href="tfg.pdf">Memoria (PDF)</a></li>
+          <li><a href="https://github.com/tuusuario/tfg">Código</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <div class="body">
+        <p>Si quieres hablar de un proyecto, una oferta o cualquier otra cosa, escríbeme.</p>
+        <dl class="spec">
+          <div><dt>Email</dt><dd><a href="mailto:tu@email.com">tu@email.com</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/tuusuario">github.com/tuusuario</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/tuusuario">linkedin.com/in/tuusuario</a></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Tu Nombre</footer>
+
+</div>
+</body>
+</html>
