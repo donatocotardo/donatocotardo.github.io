@@ -16,7 +16,6 @@
   <div class="top">
     <span>donatocotardo.dev</span>
     <nav aria-label="Principal">
-      <a href="#sobre-mi">Sobre mí</a>
       <a href="#cv">CV</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#contacto">Contacto</a>
@@ -35,20 +34,18 @@
       </dl>
     </div>
 
-    <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <div class="body">
-        <p>Soy Donato José Cotardo Valcárcel, graduado en Inteligencia Artificial por la Universidad de A Coruña y miembro de la primera promoción de este grado.</p>
-
-        <p>Me interesa especialmente el aprendizaje automático y la visión por computador, áreas en las que busco seguir desarrollándome mediante proyectos personales y experiencias profesionales. También disfruto explorando nuevas tecnologías y aprendiendo a través de los videojuegos.</p>      
-    </div>
-    </section>
-
     <section id="cv">
-      <h2>CV</h2>
+      <h2>
+        <span class="section-title"><img class="section-icon" src="images/pc.png" alt="" aria-hidden="true">CV</span>
+        <span class="window-controls" aria-label="Controles de ventana">
+          <button class="window-button minimize-button" type="button" aria-label="Minimizar CV"></button>
+          <button class="window-button restore-button" type="button" aria-label="Restaurar CV"></button>
+          <button class="window-button close-button" type="button" aria-label="Cerrar CV"></button>
+        </span>
+      </h2>
       <div class="body">
         <div>
-          <h3 class="group-title">Formación</h3>
+          <h3 class="group-title"><img class="inline-icon" src="images/bloc.png" alt="" aria-hidden="true">Formación</h3>
           <div class="entry">
             <time>2020 – 2022</time>
             <div><strong>Bachillerato de Ciencias</strong><p>IES Xograr Afonso Gómez, Sarria, Lugo</p></div>
@@ -60,13 +57,13 @@
         </div>
 
         <div>
-          <h3 class="group-title">Experiencia</h3>
+          <h3 class="group-title"><img class="inline-icon" src="images/exp.png" alt="" aria-hidden="true">Experiencia</h3>
           <div class="entry">
             <time>Sep 2025 - Nov 2025</time>
             <div><strong>Becario de visión artificial en Indra</strong>
             <p>Prácticas académicas del Grado en Inteligencia Artificial, participando en el desarrollo de soluciones de visión por computador para clientes corporativos.</p>
               <ul>
-                <li>Iberdrola: desarrollo de modelos de visión para monitorizar avifauna, con empaquetado y despliegue de las soluciones en contenedores Docker.</li>
+                <li>Iberdrola: monitorización de avifauna, con empaquetado y despliegue de las soluciones en contenedores Docker.</li>
                 <li>Mapfre: uso de Ollama para ejecutar modelos de IA generativa y visión artificial en local, automatizando la identificación, evaluación y monitorización de daños en vehículos.</li>
                 <li>IA generativa: uso de ChatGPT, Gemini y Claude como apoyo al desarrollo, y familiarización con modelos de pesos abiertos y su ejecución en local, como Qwen.</li>
               </ul>
@@ -76,9 +73,9 @@
 
 
         <div>
-          <h3 class="group-title">Habilidades</h3>
+          <h3 class="group-title"><img class="inline-icon" src="images/winrar.png" alt="" aria-hidden="true">Habilidades</h3>
           <dl class="spec">
-            <div><dt>Lenguajes</dt><dd>Python, C++, SQL, R, HTML/CSS</dd></div>
+            <div><dt>Lenguajes</dt><dd>Python, Julia, C++, SQL, R, HTML/CSS</dd></div>
             <div><dt>ML / DL</dt><dd>PyTorch, TensorFlow, Keras, scikit-learn, Hugging Face Transformers</dd></div>
             <div><dt>Visión</dt><dd>OpenCV, torchvision, YOLO (Ultralytics), Albumentations, Pillow</dd></div>
             <div><dt>Datos</dt><dd>NumPy, pandas, SciPy, Matplotlib, Seaborn, Jupyter, Google Colab</dd></div>
@@ -89,12 +86,30 @@
           </dl>
         </div>
 
-        <p><a href="cv.html">Ver CV en PDF</a></p>
+        <div class="desktop-files">
+          <div class="cv-file">
+            <a class="cv-link" href="cv.html" draggable="true" aria-label="Abrir CV en PDF">
+              <img src="images/cv.png" alt="">
+              <span>CV_Donato.pdf</span>
+            </a>
+          </div>
+          <div class="trash-file" aria-label="Papelera de reciclaje">
+            <img class="recycle-bin" src="images/basura.png" alt="">
+            <span>Papelera</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="proyectos">
-      <h2>Proyectos</h2>
+      <h2>
+        <span class="section-title"><img class="section-icon" src="images/proy.png" alt="" aria-hidden="true">Proyectos</span>
+        <span class="window-controls" aria-label="Controles de ventana">
+          <button class="window-button minimize-button" type="button" aria-label="Minimizar Proyectos"></button>
+          <button class="window-button restore-button" type="button" aria-label="Restaurar Proyectos"></button>
+          <button class="window-button close-button" type="button" aria-label="Cerrar Proyectos"></button>
+        </span>
+      </h2>
       <div class="body">
         <article class="project">
           <header>
@@ -135,7 +150,14 @@
     </section>
 
     <section id="contacto">
-      <h2>Contacto</h2>
+      <h2>
+        <span class="section-title"><img class="section-icon" src="images/tlf.png" alt="" aria-hidden="true">Contacto</span>
+        <span class="window-controls" aria-label="Controles de ventana">
+          <button class="window-button minimize-button" type="button" aria-label="Minimizar Contacto"></button>
+          <button class="window-button restore-button" type="button" aria-label="Restaurar Contacto"></button>
+          <button class="window-button close-button" type="button" aria-label="Cerrar Contacto"></button>
+        </span>
+      </h2>
       <div class="body">
         <p>Si quieres hablar de un proyecto, una oferta o cualquier otra cosa, escríbeme.</p>
         <dl class="spec">
@@ -147,8 +169,31 @@
     </section>
   </main>
 
-  <footer>© 2026 Donato</footer>
+  <footer>
+    <span>© 2026 Donato</span>
+    <button class="minesweeper-launcher" type="button" aria-label="Abrir Buscaminas">
+      <img class="mine-icon" src="images/minas.png" alt="" aria-hidden="true">
+      <span>Buscaminas</span>
+    </button>
+  </footer>
 
 </div>
+<div class="game-window" id="minesweeper-window" hidden>
+  <div class="game-titlebar">
+    <strong>Buscaminas</strong>
+    <button class="game-close" type="button" aria-label="Cerrar Buscaminas">X</button>
+  </div>
+  <div class="game-body">
+    <div class="game-toolbar">
+      <span class="mine-counter" aria-live="polite">010</span>
+      <button class="game-reset" type="button" aria-label="Reiniciar partida">🙂</button>
+      <span class="game-timer">000</span>
+    </div>
+    <div class="mine-board" role="grid" aria-label="Tablero de Buscaminas"></div>
+    <p class="game-status" aria-live="polite"></p>
+    <p class="game-help">Clic izquierdo: descubrir · clic derecho: marcar</p>
+  </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
