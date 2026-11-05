@@ -194,8 +194,6 @@ h2 {
   font-size: 14px;
 }
 
-h2::before { content: "▸ "; color: #ffff00; }
-
 .section-title {
   display: inline-flex;
   align-items: center;
@@ -362,6 +360,26 @@ h3 { margin: 0; color: var(--navy); font-size: 13px; }
 }
 
 .project:first-of-type { margin-top: 0; }
+.project-with-cover {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+.project-content { min-width: 0; }
+.project-cover {
+  display: block;
+  width: 190px;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  padding: 6px;
+  margin: 0;
+  border: 2px solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+  background: #ffffff;
+  image-rendering: auto;
+}
+.project-cover-featured { padding: 2px; }
 .project header { display: flex; justify-content: space-between; gap: 12px; }
 .project header span { color: var(--navy); font-family: "Courier New", monospace; font-weight: bold; }
 .project p { margin: 5px 0 0; }
@@ -551,6 +569,8 @@ footer {
   .spec > div, .entry { grid-template-columns: 1fr; gap: 2px; }
   .project header { display: block; }
   .project header span { display: block; margin-top: 3px; }
+  .project-with-cover { grid-template-columns: 140px minmax(0, 1fr); gap: 8px; }
+  .project-cover { width: 140px; }
   .hero::after { display: none; }
   .game-window { width: 280px; }
 }
