@@ -32,6 +32,69 @@ sectionLinks.forEach((link) => {
 
 if (cvLink && trashFile) {
   let isDragging = false;
+  let touchDrag = null;
+  let suppressClick = false;
+
+  const removeCV = () => {
+    cvLink.setAttribute("aria-hidden", "true");
+    cvLink.removeAttribute("href");
+  };
+
+  cvLink.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "touch") return;
+    touchDrag = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      moved: false,
+    };
+    cvLink.setPointerCapture(event.pointerId);
+  });
+
+  cvLink.addEventListener("pointermove", (event) => {
+    if (!touchDrag || event.pointerId !== touchDrag.pointerId) return;
+
+    if (!touchDrag.moved) {
+      const distance = Math.hypot(
+        event.clientX - touchDrag.startX,
+        event.clientY - touchDrag.startY
+      );
+      if (distance < 8) return;
+      touchDrag.moved = true;
+      cvLink.classList.add("is-dragging");
+    }
+
+    const target = document.elementFromPoint(event.clientX, event.clientY);
+    trashFile.classList.toggle("is-target", trashFile.contains(target));
+  });
+
+  const finishTouchDrag = (event, dropped) => {
+    if (!touchDrag || event.pointerId !== touchDrag.pointerId) return;
+
+    if (touchDrag.moved && dropped) {
+      const target = document.elementFromPoint(event.clientX, event.clientY);
+      if (trashFile.contains(target)) removeCV();
+    }
+
+    if (touchDrag.moved) {
+      suppressClick = true;
+      window.setTimeout(() => {
+        suppressClick = false;
+      }, 0);
+    }
+
+    touchDrag = null;
+    cvLink.classList.remove("is-dragging");
+    trashFile.classList.remove("is-target");
+  };
+
+  cvLink.addEventListener("pointerup", (event) => finishTouchDrag(event, true));
+  cvLink.addEventListener("pointercancel", (event) => finishTouchDrag(event, false));
+  cvLink.addEventListener("click", (event) => {
+    if (!suppressClick) return;
+    event.preventDefault();
+    event.stopPropagation();
+  });
 
   cvLink.addEventListener("dragstart", (event) => {
     isDragging = true;
@@ -62,8 +125,7 @@ if (cvLink && trashFile) {
   trashFile.addEventListener("drop", (event) => {
     event.preventDefault();
     if (!isDragging) return;
-    cvLink.setAttribute("aria-hidden", "true");
-    cvLink.removeAttribute("href");
+    removeCV();
     trashFile.classList.remove("is-target");
   });
 }
@@ -159,6 +221,32 @@ function placeMines(firstIndex) {
   });
 }
 
+function toggleMineFlag(cell) {
+  if (mineGameOver || cell.revealed) return;
+  cell.flagged = !cell.flagged;
+  cell.element.innerHTML = cell.flagged
+    ? '<img class="flag-image" src="images/band.png" alt="Bandera">'
+    : "";
+  updateMineCounter(10 - mineCells.filter((mineCell) => mineCell.flagged).length);
+}
+
+function activateMineCell(index) {
+  const cell = mineCells[index];
+  if (!cell.revealed) {
+    revealCell(index);
+    return;
+  }
+  if (mineGameOver || cell.number === 0) return;
+
+  const adjacentCells = neighbours(index);
+  const flaggedCount = adjacentCells.filter((neighbour) => mineCells[neighbour].flagged).length;
+  if (flaggedCount !== cell.number) return;
+
+  adjacentCells.forEach((neighbour) => {
+    if (!mineCells[neighbour].flagged) revealCell(neighbour);
+  });
+}
+
 function startMinesweeper() {
   clearInterval(mineTimerId);
   mineSeconds = 0;
@@ -176,15 +264,43 @@ function startMinesweeper() {
     button.className = "mine-cell";
     button.type = "button";
     button.setAttribute("role", "gridcell");
-    button.addEventListener("click", () => revealCell(index));
+    let holdTimer;
+    let holdTriggered = false;
+    let holdStart;
+    button.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "touch" || !event.isPrimary) return;
+      holdTriggered = false;
+      holdStart = { x: event.clientX, y: event.clientY };
+      button.setPointerCapture(event.pointerId);
+      holdTimer = window.setTimeout(() => {
+        holdTriggered = true;
+        toggleMineFlag(cell);
+      }, 500);
+    });
+    button.addEventListener("pointermove", (event) => {
+      if (!holdStart || event.pointerType !== "touch") return;
+      if (Math.hypot(event.clientX - holdStart.x, event.clientY - holdStart.y) > 10) {
+        clearTimeout(holdTimer);
+        holdStart = null;
+      }
+    });
+    const clearHold = () => {
+      clearTimeout(holdTimer);
+      holdStart = null;
+    };
+    button.addEventListener("pointerup", clearHold);
+    button.addEventListener("pointercancel", clearHold);
+    button.addEventListener("click", (event) => {
+      if (holdTriggered) {
+        holdTriggered = false;
+        event.preventDefault();
+        return;
+      }
+      activateMineCell(index);
+    });
     button.addEventListener("contextmenu", (event) => {
       event.preventDefault();
-      if (mineGameOver || cell.revealed) return;
-      cell.flagged = !cell.flagged;
-      button.innerHTML = cell.flagged
-        ? '<img class="flag-image" src="images/band.png" alt="Bandera">'
-        : "";
-      updateMineCounter(10 - mineCells.filter((mineCell) => mineCell.flagged).length);
+      toggleMineFlag(cell);
     });
     cell.element = button;
     mineBoard.append(button);

@@ -303,9 +303,17 @@ section.is-closed { display: none; }
   background: #ffffe1;
 }
 
+.cv-link.is-dragging {
+  opacity: 0.55;
+}
+
 .cv-link,
 .cv-link * {
   cursor: url("images/cursos_toca.png") 0 0, pointer;
+}
+
+.cv-link {
+  touch-action: none;
 }
 
 .cv-link img {
@@ -507,6 +515,7 @@ footer {
   width: 24px;
   height: 24px;
   padding: 0;
+  touch-action: none;
   color: var(--navy);
   background: var(--window);
   border: 2px solid;
