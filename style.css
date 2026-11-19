@@ -392,6 +392,31 @@ h3 { margin: 0; color: var(--navy); font-size: 13px; }
 .project header span { color: var(--navy); font-family: "Courier New", monospace; font-weight: bold; }
 .project p { margin: 5px 0 0; }
 .project .stack { color: #444444; font-family: "Courier New", monospace; font-size: 12px; }
+.certification-cover {
+  width: 190px;
+  height: 110px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.certification-details {
+  margin: 6px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.certification-details > div {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 6px;
+  padding: 2px 0;
+}
+.certification-details dt {
+  color: var(--navy);
+  font-weight: bold;
+}
+.certification-details dd {
+  margin: 0;
+}
 
 ul { margin-top: 6px; padding-left: 22px; }
 li::marker { color: var(--navy); }
@@ -580,6 +605,8 @@ footer {
   .project header span { display: block; margin-top: 3px; }
   .project-with-cover { grid-template-columns: 140px minmax(0, 1fr); gap: 8px; }
   .project-cover { width: 140px; }
+  .certification-cover { height: 90px; }
+  .certification-details > div { grid-template-columns: 1fr; gap: 0; }
   .hero::after { display: none; }
   .game-window { width: 280px; }
 }
