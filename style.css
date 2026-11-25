@@ -398,6 +398,7 @@ h3 { margin: 0; color: var(--navy); font-size: 13px; }
   object-fit: contain;
   image-rendering: pixelated;
 }
+.certification-logo { image-rendering: auto; }
 .certification-details {
   margin: 6px 0 0;
   padding: 0;
@@ -607,6 +608,7 @@ footer {
   .project-cover { width: 140px; }
   .certification-cover { height: 90px; }
   .certification-details > div { grid-template-columns: 1fr; gap: 0; }
+  .certification-details dd { overflow-wrap: anywhere; }
   .hero::after { display: none; }
   .game-window { width: 280px; }
 }
